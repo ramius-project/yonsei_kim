@@ -22,14 +22,14 @@ export default function Home() {
       <section className="mt-24 w-full max-w-5xl px-6 py-16 flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="md:w-1/2 space-y-6">
           <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
-            과잉진료 없는 양심 치과
+            과잉진료 없이 꼭 필요한 치료만,
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
             가족처럼 편안하게,<br/>
             <span className="text-blue-600">내 치아처럼 소중하게.</span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            36년 경력의 전문의가 직접 진료합니다.<br/>
+            36년 경력의 통합치의학전문의가 직접 진료합니다.<br/>
             최신 장비를 갖춘 깨끗한 환경에서 안심하고 진료받으세요.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
@@ -84,7 +84,7 @@ export default function Home() {
                 <span className="text-gray-900 font-bold">13:00 - 14:00</span>
               </div>
               <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span className="text-gray-600 font-medium">목요일 오후 진료시작</span>
+                <span className="text-gray-600 font-medium">목요일 오후부터 진료시작</span>
                 <span className="text-blue-600 font-bold">14:00 - 18:00</span>
               </div>
               <div className="flex justify-between">
@@ -111,7 +111,7 @@ export default function Home() {
             <div className="space-y-3 text-gray-600">
               <p><strong className="text-gray-800">주소:</strong> 인천광역시 남동구 백범로 212 2층<br/><span className="text-sm text-gray-400">(구주소: 남동구 만수3동 861-6)</span></p>
               <p><strong className="text-gray-800">전화:</strong> 032-461-2875</p>
-              <p><strong className="text-gray-800">주차:</strong> 건물 내 주차 가능 여부 확인 필요</p>
+              <p><strong className="text-gray-800">주차:</strong> 공영 주차장 건물((남동구 만수동 895-4)</p>
             </div>
           </div>
           {/* 지도 영역 (나중에 네이버/카카오 지도 API로 교체) */}
