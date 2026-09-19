@@ -114,9 +114,18 @@ export default function Home() {
               <p><strong className="text-gray-800">주차:</strong> 공영 주차장 건물((남동구 만수동 895-4)</p>
             </div>
           </div>
-          {/* 지도 영역 (나중에 네이버/카카오 지도 API로 교체) */}
-          <div className="w-full h-64 md:h-80 bg-gray-200 flex items-center justify-center text-gray-500 font-medium">
-            [ 네이버 지도 / 카카오맵 위젯이 들어갈 자리 ]
+          {/* 지도 영역 (실제 카카오맵 삽입) */}
+          <div className="w-full h-64 md:h-80">
+            {/* <a href="https://map.kakao.com/?urlX=439377&urlY=1100280&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=439375&MY=1100278&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a><div class="hide" style="overflow:hidden;padding:7px 11px;border:1px solid #dfdfdf;border-color:rgba(0,0,0,.1);border-radius:0 0 2px 2px;background-color:#f9f9f9;width:482px;"><strong style="float: left;"><img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵"></strong><div style="float: right;position:relative"><a style="font-size:12px;text-decoration:none;float:left;height:15px;padding-top:1px;line-height:15px;color:#000" target="_blank" href="https://map.kakao.com/?urlX=439377&urlY=1100280&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false">지도 크게 보기</a></div></div>
+ */}
+            <iframe 
+              src="https://map.kakao.com/link/map/연세김치과의원,37.xxxx,126.xxxx" 
+              width="100%" 
+              height="100%" 
+              frameBorder="0" 
+              title="연세김치과의원 지도"
+              style={{ border: 0 }}
+            ></iframe>
           </div>
         </div>
       </section>
