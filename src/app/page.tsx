@@ -29,7 +29,7 @@ export default function Home() {
             <span className="text-blue-600">내 치아처럼 소중하게.</span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            20년 경력의 전문의가 직접 진료합니다.<br/>
+            36년 경력의 전문의가 직접 진료합니다.<br/>
             최신 장비를 갖춘 깨끗한 환경에서 안심하고 진료받으세요.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
@@ -56,7 +56,7 @@ export default function Home() {
             { icon: '🦷', title: '일반진료', desc: '충치치료, 스케일링' },
             { icon: '✨', title: '심미보철', desc: '라미네이트, 올세라믹' },
             { icon: '🔩', title: '임플란트', desc: '디지털 정밀 임플란트' },
-            { icon: '😁', title: '치아교정', desc: '투명교정, 부분교정' },
+            { icon: '😁', title: '노인보철', desc: '보험틀니, 보험임플란트' },
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-gray-100">
               <div className="text-4xl mb-3">{item.icon}</div>
@@ -77,15 +77,15 @@ export default function Home() {
             <div className="space-y-3">
               <div className="flex justify-between border-b border-gray-100 pb-2">
                 <span className="text-gray-600 font-medium">월요일 - 금요일</span>
-                <span className="text-gray-900 font-bold">09:30 - 18:30</span>
+                <span className="text-gray-900 font-bold">10:00 - 18:00</span>
               </div>
               <div className="flex justify-between border-b border-gray-100 pb-2">
                 <span className="text-gray-600 font-medium">점심시간</span>
                 <span className="text-gray-900 font-bold">13:00 - 14:00</span>
               </div>
               <div className="flex justify-between border-b border-gray-100 pb-2">
-                <span className="text-gray-600 font-medium">토요일</span>
-                <span className="text-blue-600 font-bold">09:30 - 14:00</span>
+                <span className="text-gray-600 font-medium">목요일 오후 진료시작</span>
+                <span className="text-blue-600 font-bold">14:00 - 18:00</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 font-medium">일요일 / 공휴일</span>
@@ -93,8 +93,8 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-blue-50 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
-              <p className="text-blue-800 font-semibold mb-2">야간 진료 / 토요일 진료</p>
-              <p className="text-sm text-blue-600 mb-4">직장인과 학생을 위해 편리한 시간을 제공합니다.</p>
+              <p className="text-blue-800 font-semibold mb-2">목오전 휴진, 목요일 토요일 교차 휴진</p>
+              <p className="text-sm text-blue-600 mb-4">근로기준법에 의거 병원가족 주5일 근무 합니다.</p>
               <a href="tel:032-461-2875" className="text-blue-800 font-bold text-xl hover:underline">📞 032-461-2875</a>
             </div>
           </div>
@@ -123,8 +123,8 @@ export default function Home() {
 
       {/* 6. 하단 푸터 (법적 고지 사항) */}
       <footer className="w-full max-w-5xl px-6 mt-10 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
-        <p className="mb-2">상호: 연세김치과의원 | 대표자: 김의수</p>
-        <p>주소: 인천광역시 남동구 백범로 212 2층 | 사업자등록번호: 313-35-99094</p>
+        <p className="mb-2">상호: 연세김치과의원 | 원장: 김의수</p>
+        <p>주소: 인천광역시 남동구 백범로 212 2층 | 사업자등록번호: 131-35-99094</p>
         <p className="mt-4 text-gray-400">© 2024 연세김치과의원. All rights reserved.</p>
       </footer>
 
