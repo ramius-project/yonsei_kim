@@ -12,7 +12,7 @@ export default function Home() {
           <a href="#services" className="hover:text-blue-600 transition">진료과목</a>
           <a href="#location" className="hover:text-blue-600 transition">오시는길</a>
         </nav>
-        <a href="tel:02-123-4567" className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition shadow-md">
+        <a href="tel:032-461-2875" className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition shadow-md">
           📞 전화예약
         </a>
       </header>
