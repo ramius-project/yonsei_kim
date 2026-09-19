@@ -21,7 +21,7 @@ export default function Home() {
       <section className="mt-24 w-full max-w-6xl px-6 py-16 flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="md:w-1/2 space-y-6">
           <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
-            20년 경력의 전문의 직접 진료
+            35년 경력의 통합진료전문의 직접 진료
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
             가족처럼 편안하게,<br/>
@@ -57,7 +57,7 @@ export default function Home() {
             { icon: '🦷', title: '일반진료', desc: '충치치료, 스케일링' },
             { icon: '✨', title: '심미보철', desc: '라미네이트, 올세라믹' },
             { icon: '🔩', title: '임플란트', desc: '디지털 정밀 임플란트' },
-            { icon: '😁', title: '치아교정', desc: '투명교정, 부분교정' },
+            { icon: '😁', title: '노인보철', desc: '틀니, 노인임플란트' },
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition text-center border border-gray-100">
               <div className="text-4xl mb-4">{item.icon}</div>
