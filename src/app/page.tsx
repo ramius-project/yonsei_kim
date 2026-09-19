@@ -114,19 +114,31 @@ export default function Home() {
               <p><strong className="text-gray-800">주차:</strong> 공영 주차장 건물((남동구 만수동 895-4)</p>
             </div>
           </div>
-          {/* 지도 영역 (실제 카카오맵 삽입) */}
-          <div className="w-full h-64 md:h-80">
-            {/* <a href="https://map.kakao.com/?urlX=439377&urlY=1100280&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=439375&MY=1100278&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a><div class="hide" style="overflow:hidden;padding:7px 11px;border:1px solid #dfdfdf;border-color:rgba(0,0,0,.1);border-radius:0 0 2px 2px;background-color:#f9f9f9;width:482px;"><strong style="float: left;"><img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵"></strong><div style="float: right;position:relative"><a style="font-size:12px;text-decoration:none;float:left;height:15px;padding-top:1px;line-height:15px;color:#000" target="_blank" href="https://map.kakao.com/?urlX=439377&urlY=1100280&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false">지도 크게 보기</a></div></div>
- */}
-            <iframe 
-              src="https://map.kakao.com/link/map/연세김치과의원,37.xxxx,126.xxxx" 
-              width="100%" 
-              height="100%" 
-              frameBorder="0" 
-              title="연세김치과의원 지도"
-              style={{ border: 0 }}
-            ></iframe>
-          </div>
+                    {/* 지도 영역 (네이버 지도 링크 연결) */}
+          <a 
+            href="https://naver.me/FuteL16I" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block w-full h-64 md:h-80 bg-blue-50 relative overflow-hidden rounded-b-3xl group hover:bg-blue-100 transition"
+          >
+            {/* 지도 배경 이미지 (실제 지도처럼 보이는 일러스트) */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-20">
+               <svg xmlns="http://www.w3.org/2000/svg" className="h-48 w-48 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.894-1.447L15 4m0 13V4m0 0L9 7" />
+               </svg>
+            </div>
+
+            {/* 중앙 안내 문구 및 버튼 */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+              <div className="bg-white/90 backdrop-blur-sm px-8 py-6 rounded-2xl shadow-lg border border-blue-100 transform group-hover:scale-105 transition duration-300">
+                <p className="text-blue-800 font-bold text-xl mb-2">📍 연세김치과의원</p>
+                <p className="text-gray-600 text-sm mb-4">인천광역시 남동구 백범로 212 2층</p>
+                <span className="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-md group-hover:bg-blue-700 transition">
+                  네이버 지도에서 크게 보기
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
