@@ -30,6 +30,44 @@ text
 
 
 
+웹사이트 상에서 휴진일 및 진료 일정을 직접 입력·수정할 수 있는 팝업(모달) 기능을 추가했습니다!
+
+이제 복잡한 코드 수정 없이 웹 화면에서 바로 클릭 몇 번으로 휴진일을 등록/수정/삭제하실 수 있습니다.
+
+📱 웹에서 휴진 일정 입력/수정하는 방법
+http://localhost:3000 접속하기
+
+브라우저를 열고 웹사이트에 접속합니다.
+일정 수정 모달 열기
+
+달력 우측 상단의 ✏️ 휴진 등록 버튼을 클릭하거나,
+달력에서 원하시는 날짜를 클릭한 뒤 하단의 ✏️ 이 날짜 휴진/일정 수정 버튼을 누릅니다.
+내용 입력하기
+
+날짜: 변경할 날짜 선택
+진료 구별: 🔴 휴진, 🟡 목오후진료, 🟢 토요일진료, 🔵 정상진료 중 선택
+사유 입력: 예) 여름 휴가, 추석 연휴, 원장님 세미나 휴진 등 사유 작성
+💾 웹 화면에 즉시 저장 버튼 클릭!
+
+클릭 즉시 달력에 🔴 휴진 뱃지가 생성되며 화면에 실시간 반영됩니다.
+등록하신 일정은 브라우저(로컬 스토리지)에 저장되어 새로고침을 해도 그대로 유지됩니다.
+🌐 작성한 휴진 일정을 GitHub / Vercel(실제 인터넷 웹사이트)에 영구 반영하는 방법
+웹 화면에서 일정을 여러 개 등록하신 후, 전 세계 모든 방문자(환자들)에게 영구적으로 보이고 싶으실 때 사용하시면 됩니다.
+
+✏️ 휴진 등록 팝업창 하단의 📋 GitHub/서버 영구 반영용 코드 복사 버튼을 클릭합니다.
+클립보드에 자동 복사된 코드를 
+
+src/components/MonthlyCalendar.tsx
+ 파일 11번째 줄의 DEFAULT_SPECIAL_SCHEDULES = { ... } 부분에 붙여넣습니다.
+터미널에서 GitHub로 전송(Push)합니다:
+bash
+git add .
+git commit -m "Update hospital holiday schedules"
+git push origin main
+지금 바로 http://localhost:3000에서 ✏️ 휴진 등록 버튼을 눌러 테스트해 보세요!
+
+
+
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
