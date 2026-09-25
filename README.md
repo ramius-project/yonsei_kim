@@ -34,39 +34,27 @@ text
 
 이제 복잡한 코드 수정 없이 웹 화면에서 바로 클릭 몇 번으로 휴진일을 등록/수정/삭제하실 수 있습니다.
 
-📱 웹에서 휴진 일정 입력/수정하는 방법
-http://localhost:3000 접속하기
+웹화면(http://localhost:3000)에서 ✏️ 휴진 등록 버튼을 누르고 날짜 및 휴진 사유를 작성한 후 💾 저장 버튼을 누르시면:
+웹페이지가 내 컴퓨터의 저장 API(
 
-브라우저를 열고 웹사이트에 접속합니다.
-일정 수정 모달 열기
+src/app/api/save-schedule/route.ts
+)를 자동으로 호출하여 프로젝트 내 데이터 파일(
 
-달력 우측 상단의 ✏️ 휴진 등록 버튼을 클릭하거나,
-달력에서 원하시는 날짜를 클릭한 뒤 하단의 ✏️ 이 날짜 휴진/일정 수정 버튼을 누릅니다.
-내용 입력하기
+src/data/schedules.json
+)을 실시간으로 수정 및 저장합니다!
+🚀 앞으로의 변경 & 배포 순서
+이제 일정 관리가 훨씬 쉬워졌습니다:
 
-날짜: 변경할 날짜 선택
-진료 구별: 🔴 휴진, 🟡 목오후진료, 🟢 토요일진료, 🔵 정상진료 중 선택
-사유 입력: 예) 여름 휴가, 추석 연휴, 원장님 세미나 휴진 등 사유 작성
-💾 웹 화면에 즉시 저장 버튼 클릭!
-
-클릭 즉시 달력에 🔴 휴진 뱃지가 생성되며 화면에 실시간 반영됩니다.
-등록하신 일정은 브라우저(로컬 스토리지)에 저장되어 새로고침을 해도 그대로 유지됩니다.
-🌐 작성한 휴진 일정을 GitHub / Vercel(실제 인터넷 웹사이트)에 영구 반영하는 방법
-웹 화면에서 일정을 여러 개 등록하신 후, 전 세계 모든 방문자(환자들)에게 영구적으로 보이고 싶으실 때 사용하시면 됩니다.
-
-✏️ 휴진 등록 팝업창 하단의 📋 GitHub/서버 영구 반영용 코드 복사 버튼을 클릭합니다.
-클립보드에 자동 복사된 코드를 
-
-src/components/MonthlyCalendar.tsx
- 파일 11번째 줄의 DEFAULT_SPECIAL_SCHEDULES = { ... } 부분에 붙여넣습니다.
-터미널에서 GitHub로 전송(Push)합니다:
+http://localhost:3000 접속 후 웹 화면에서 휴진일 입력/수정/삭제 후 💾 저장 클릭 (상단에 "✅ 내 컴퓨터 파일에 코드도 자동으로 수정·저장되었습니다!" 초록색 알림이 뜹니다)
+터미널에서 GitHub 전송 명령어만 실행:
 bash
 git add .
-git commit -m "Update hospital holiday schedules"
+git commit -m "Update hospital schedules"
 git push origin main
-지금 바로 http://localhost:3000에서 ✏️ 휴진 등록 버튼을 눌러 테스트해 보세요!
+직접 http://localhost:3000에서 휴진일을 하나 추가/수정해 보시고, VS Code에서 
 
-
+src/data/schedules.json
+ 파일 내용이 자동으로 바뀌는지 확인해 보세요!
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
