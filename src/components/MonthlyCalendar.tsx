@@ -15,8 +15,11 @@ export default function MonthlyCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDate, setSelectedDate] = useState<Date | null>(today);
   
-  // 특별 일정 상태 (schedules.json 및 로컬 스토리지 연동)
+  // 특별 일정 상태 (schedules.json)
   const [specialSchedules, setSpecialSchedules] = useState<Record<string, ScheduleItem>>(initialSchedules as Record<string, ScheduleItem>);
+  
+  // 로컬 PC(localhost) 환경 여부 체크
+  const [isLocalhost, setIsLocalhost] = useState(false);
 
   // 모달 및 알림 상태 관리
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,18 +28,36 @@ export default function MonthlyCalendar() {
   const [editNote, setEditNote] = useState('');
   const [saveStatusMsg, setSaveStatusMsg] = useState('');
 
-  // 일정 변경 시 파일 및 로컬 스토리지에 자동 저장
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      const local = hostname === 'localhost' || hostname === '127.0.0.1';
+      setIsLocalhost(local);
+
+      // 로컬일 때만 로컬스토리지 임시저장 내역도 함께 불러옴
+      if (local) {
+        try {
+          const saved = localStorage.getItem('YONSEI_KIM_SPECIAL_SCHEDULES');
+          if (saved) {
+            setSpecialSchedules(JSON.parse(saved));
+          }
+        } catch (e) {
+          console.error('LocalStorage load failed:', e);
+        }
+      }
+    }
+  }, []);
+
+  // 일정 변경 시 파일 및 로컬 스토리지에 자동 저장 (로컬 PC에서만 실행됨)
   const saveSchedules = async (updated: Record<string, ScheduleItem>) => {
     setSpecialSchedules(updated);
 
-    // 1. 로컬 스토리지 저장
     try {
       localStorage.setItem('YONSEI_KIM_SPECIAL_SCHEDULES', JSON.stringify(updated));
     } catch (e) {
       console.error('LocalStorage save failed:', e);
     }
 
-    // 2. 백엔드 API를 통해 내 컴퓨터 파일(src/data/schedules.json)에 자동 저장!
     try {
       const res = await fetch('/api/save-schedule', {
         method: 'POST',
@@ -45,7 +66,7 @@ export default function MonthlyCalendar() {
       });
 
       if (res.ok) {
-        setSaveStatusMsg('✅ 내 컴퓨터 파일에 코드도 자동으로 수정·저장되었습니다!');
+        setSaveStatusMsg('✅ 내 컴퓨터 파일(schedules.json)에 자동으로 수정·저장되었습니다!');
         setTimeout(() => setSaveStatusMsg(''), 4000);
       }
     } catch (e) {
@@ -102,8 +123,9 @@ export default function MonthlyCalendar() {
     return { type: 'normal' as const, note: '정상진료 (10:00~18:00 / 점심 13:00~14:00)' };
   };
 
-  // 모달 열기 (특정 날짜 수정)
+  // 모달 열기 (로컬 전용)
   const handleOpenEditModal = (targetDate?: Date) => {
+    if (!isLocalhost) return;
     const d = targetDate || selectedDate || new Date();
     const formattedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     
@@ -186,13 +208,16 @@ export default function MonthlyCalendar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => handleOpenEditModal()}
-            className="px-3 py-1.5 text-xs font-semibold bg-amber-400 hover:bg-amber-300 text-gray-900 rounded-lg shadow-sm transition flex items-center gap-1"
-            title="웹에서 직접 일정 등록/수정"
-          >
-            ✏️ 휴진 등록
-          </button>
+          {/* 로컬 PC(localhost)에서 접속했을 때만 수정 버튼 노출 */}
+          {isLocalhost && (
+            <button
+              onClick={() => handleOpenEditModal()}
+              className="px-3 py-1.5 text-xs font-semibold bg-amber-400 hover:bg-amber-300 text-gray-900 rounded-lg shadow-sm transition flex items-center gap-1"
+              title="로컬 PC 전용 일정 입력/수정"
+            >
+              ✏️ 휴진 등록 (관리자)
+            </button>
+          )}
           <button
             onClick={goToToday}
             className="hidden sm:inline-block px-3 py-1.5 text-xs font-semibold bg-white/20 hover:bg-white/30 rounded-lg backdrop-blur-sm transition"
@@ -361,12 +386,15 @@ export default function MonthlyCalendar() {
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            <button
-              onClick={() => handleOpenEditModal(selectedDayInfo.dateObj)}
-              className="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold shadow-sm transition whitespace-nowrap"
-            >
-              ✏️ 이 날짜 휴진/일정 수정
-            </button>
+            {/* 로컬 PC에서만 수정 버튼 표시 */}
+            {isLocalhost && (
+              <button
+                onClick={() => handleOpenEditModal(selectedDayInfo.dateObj)}
+                className="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold shadow-sm transition whitespace-nowrap"
+              >
+                ✏️ 일정 수정
+              </button>
+            )}
             <a
               href="tel:032-461-2875"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs md:text-sm font-semibold shadow-sm transition whitespace-nowrap text-center"
@@ -379,22 +407,28 @@ export default function MonthlyCalendar() {
 
       {/* 6. 하단 안내문 */}
       <div className="bg-gray-50 px-4 py-2.5 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-2">
-        <span>💡 웹 화면에서 휴진 일정을 변경하시면 내 컴퓨터 파일(schedules.json)에 자동 수정·저장됩니다!</span>
-        <button
-          onClick={() => handleOpenEditModal()}
-          className="text-blue-600 hover:underline font-medium text-xs whitespace-nowrap"
-        >
-          ⚙️ 웹에서 일정 입력/관리하기 ➔
-        </button>
+        {isLocalhost ? (
+          <>
+            <span>💡 <strong>로컬 PC 접속중:</strong> 웹에서 휴진 일정을 변경하시면 내 컴퓨터 파일(schedules.json)에 자동 저장됩니다.</span>
+            <button
+              onClick={() => handleOpenEditModal()}
+              className="text-blue-600 hover:underline font-medium text-xs whitespace-nowrap"
+            >
+              ⚙️ 휴진 등록하기 ➔
+            </button>
+          </>
+        ) : (
+          <span className="w-full text-center">💡 날짜를 클릭하시면 상세 진료 시간 및 전화 예약 안내를 확인하실 수 있습니다.</span>
+        )}
       </div>
 
-      {/* 7. 일정 입력/수정 모달 (Modal) */}
-      {isModalOpen && (
+      {/* 7. 일정 입력/수정 모달 (로컬 PC 전용) */}
+      {isModalOpen && isLocalhost && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 border border-gray-100 animate-fadeIn">
             <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
               <h4 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                ⚙️ 휴진 및 진료 일정 등록/수정
+                ⚙️ 휴진 및 진료 일정 등록/수정 (로컬 관리자)
               </h4>
               <button
                 onClick={() => setIsModalOpen(false)}
