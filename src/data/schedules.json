@@ -1,0 +1,21 @@
+{
+  "2026-01-01": { "type": "closed", "note": "신정 휴진" },
+  "2026-03-01": { "type": "closed", "note": "삼일절" },
+  "2026-05-05": { "type": "closed", "note": "어린이날" },
+  "2026-05-24": { "type": "closed", "note": "부처님오신날" },
+  "2026-06-06": { "type": "closed", "note": "현충일" },
+  "2026-08-15": { "type": "closed", "note": "광복절" },
+  "2026-09-24": { "type": "closed", "note": "추석 연휴" },
+  "2026-09-25": { "type": "closed", "note": "추석" },
+  "2026-09-26": { "type": "closed", "note": "추석 연휴" },
+  "2026-10-03": { "type": "closed", "note": "개천절" },
+  "2026-10-05": { "type": "closed", "note": "휴진" },
+  "2026-10-06": { "type": "closed", "note": "휴진" },
+  "2026-10-07": { "type": "closed", "note": "휴진" },
+  "2026-10-08": { "type": "closed", "note": "휴진" },
+  "2026-10-09": { "type": "closed", "note": "한글날" },
+  "2026-10-10": { "type": "closed", "note": "휴진" },
+  "2026-10-24": { "type": "closed", "note": "휴진" },
+  "2026-10-31": { "type": "closed", "note": "휴진" },
+  "2026-12-25": { "type": "closed", "note": "성탄절" }
+}
