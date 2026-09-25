@@ -14,7 +14,7 @@ VS Code에서 터미널 열기
 또는 상단 메뉴의 터미널(Terminal) ➔ 새 터미널(New Terminal) 클릭
 개발 서버 실행 명령어 입력
 
-bash
+해당 폴더에서 터미날을 열거가, vscode 에서 새 터미날을 열고
 npm run dev
 입력 후 Enter를 치면 아래처럼 준비 완료 메시지가 뜹니다:
 
