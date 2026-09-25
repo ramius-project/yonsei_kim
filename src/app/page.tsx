@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-blue-50 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
-              <p className="text-blue-800 font-semibold mb-2">목오전 휴진, 목요일 토요일 교차 휴진</p>
+              <p className="text-blue-800 font-semibold mb-2">목오전 휴진, 목요일 토요일 불규칙 휴진</p>
               <p className="text-sm text-blue-600 mb-4">근로기준법에 의거 병원가족 주5일 근무 합니다.</p>
               <a href="tel:032-461-2875" className="text-blue-800 font-bold text-xl hover:underline">📞 032-461-2875</a>
             </div>
