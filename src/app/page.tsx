@@ -37,7 +37,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <a href="tel:032-461-2875" className="bg-blue-600 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-blue-700 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-center">
-              전화로 예약하기
+              진료상담 전화
             </a>
             <a href="#schedule" className="border border-blue-200 bg-white text-blue-600 px-8 py-3.5 rounded-xl font-semibold hover:bg-blue-50 transition text-center">
               이번달 스케줄 확인
@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-blue-50 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
-              <p className="text-blue-800 font-semibold mb-2">목오전 휴진, 목요일 토요일 교차 휴진</p>
+              <p className="text-blue-800 font-semibold mb-2">목오전 휴진, 목요일 토요일 불규칙 휴진</p>
               <p className="text-sm text-blue-600 mb-4">근로기준법에 의거 병원가족 주5일 근무 합니다.</p>
               <a href="tel:032-461-2875" className="text-blue-800 font-bold text-xl hover:underline">📞 032-461-2875</a>
             </div>
