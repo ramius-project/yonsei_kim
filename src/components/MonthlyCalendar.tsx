@@ -10,7 +10,15 @@ interface ScheduleItem {
   note: string;
 }
 
-export default function MonthlyCalendar() {
+interface MonthlyCalendarProps {
+  maxMonthsAhead?: number;
+  allowPastMonths?: boolean;
+}
+
+export default function MonthlyCalendar({
+  maxMonthsAhead = 1,
+  allowPastMonths = false,
+}: MonthlyCalendarProps = {}) {
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDate, setSelectedDate] = useState<Date | null>(today);
@@ -83,12 +91,20 @@ export default function MonthlyCalendar() {
   const startingDayOfWeek = firstDayOfMonth.getDay();
   const totalDays = lastDayOfMonth.getDate();
 
+  const currentYearMonth = today.getFullYear() * 12 + today.getMonth();
+  const viewYearMonth = year * 12 + month;
+
+  const isPrevDisabled = !allowPastMonths && viewYearMonth <= currentYearMonth;
+  const isNextDisabled = viewYearMonth >= currentYearMonth + maxMonthsAhead;
+
   const prevMonth = () => {
+    if (isPrevDisabled) return;
     setCurrentDate(new Date(year, month - 1, 1));
     setSelectedDate(null);
   };
 
   const nextMonth = () => {
+    if (isNextDisabled) return;
     setCurrentDate(new Date(year, month + 1, 1));
     setSelectedDate(null);
   };
@@ -226,14 +242,24 @@ export default function MonthlyCalendar() {
           </button>
           <button
             onClick={prevMonth}
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 transition text-lg"
+            disabled={isPrevDisabled}
+            className={`w-9 h-9 flex items-center justify-center rounded-full transition text-lg ${
+              isPrevDisabled
+                ? 'bg-white/5 text-white/30 cursor-not-allowed'
+                : 'bg-white/10 hover:bg-white/25 text-white'
+            }`}
             title="이전 달"
           >
             ‹
           </button>
           <button
             onClick={nextMonth}
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 transition text-lg"
+            disabled={isNextDisabled}
+            className={`w-9 h-9 flex items-center justify-center rounded-full transition text-lg ${
+              isNextDisabled
+                ? 'bg-white/5 text-white/30 cursor-not-allowed'
+                : 'bg-white/10 hover:bg-white/25 text-white'
+            }`}
             title="다음 달"
           >
             ›
